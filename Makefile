@@ -1,5 +1,6 @@
 CC := gcc
 CFLAGS := -Wall -Wextra -O2
+LDFLAGS :=
 
 src_list := test.c
 obj_list := $(patsubst %.c,%.o,$(src_list))
@@ -13,7 +14,7 @@ clean:
 	rm -f hello.elf $(obj_list)
 
 hello.elf: $(obj_list)
-	$(CC) -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^
 
 %.o: %.c
-	$(CC) -o $@ -c $< 
+	$(CC) $(CFLAGS) -o $@ -c $< 
