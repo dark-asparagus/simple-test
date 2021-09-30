@@ -11,12 +11,13 @@ pipeline {
       parallel {
         stage('Build') {
           steps {
+            echo 'software 1'
             sh '''
 echo "make"'''
           }
         }
 
-        stage('') {
+        stage('software 2') {
           steps {
             sh 'echo Ni-How'
           }
@@ -26,14 +27,31 @@ echo "make"'''
     }
 
     stage('Test') {
-      steps {
-        echo 'Test'
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Test'
+          }
+        }
+
+        stage('test2') {
+          steps {
+            echo 'test2'
+          }
+        }
+
       }
     }
 
     stage('Deploy') {
       steps {
         echo 'deploy'
+      }
+    }
+
+    stage('Notify') {
+      steps {
+        echo 'email'
       }
     }
 
