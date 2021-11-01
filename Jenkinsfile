@@ -20,6 +20,7 @@ echo "make"'''
         stage('software 2') {
           steps {
             sh 'echo Ni-How'
+            sh 'echo Ni-How'
           }
         }
 
